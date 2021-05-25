@@ -1,4 +1,4 @@
-package edu.uca.pokedexapp.ui.fragments
+package edu.uca.pokedexapp.ui.fragment
 
 import android.content.Context
 import androidx.navigation.fragment.NavHostFragment

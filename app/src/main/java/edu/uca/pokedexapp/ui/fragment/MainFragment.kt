@@ -1,4 +1,4 @@
-package edu.uca.pokedexapp.ui.fragments
+package edu.uca.pokedexapp.ui.fragment
 
 import android.os.Bundle
 import android.util.Log
@@ -43,8 +43,8 @@ constructor() : Fragment(R.layout.fragment_first){
             )
         layoutManager.reverseLayout = true
         layoutManager.stackFromEnd = true
-        recyclerViewPkmn.layoutManager = layoutManager
-        recyclerViewPkmn.adapter = adapterTypes
+        recyclerViewTypes.layoutManager = layoutManager
+        recyclerViewTypes.adapter = adapterTypes
 
         subscribeObservers()
         lifecycleScope.launch {

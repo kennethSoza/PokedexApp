@@ -1,4 +1,4 @@
-package edu.uca.pokedexapp.ui.fragments
+package edu.uca.pokedexapp.ui.fragment
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi

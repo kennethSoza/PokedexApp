@@ -20,7 +20,11 @@
 
     <androidx.recyclerview.widget.RecyclerView
         tools:listitem="@layout/item_types"
-        android:id="@+id/recyclerViewPkmn"
+        android:id="@+id/recyclerViewTypes"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+
+
+
+        />
 </androidx.constraintlayout.widget.ConstraintLayout>

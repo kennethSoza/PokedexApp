@@ -51,7 +51,7 @@ class AdapterType : RecyclerView.Adapter<AdapterType.ViewHolder>(){
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model= items[position]
-        holder.type_name.text = model.typename
+        holder.type_name.text = "Tipo "+model.typename
         Picasso.get()
             .load(model.url_Image)
             .into(holder.typeImage)
