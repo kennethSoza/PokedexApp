@@ -7,19 +7,19 @@
     android:layout_margin="8dp"
     android:clickable="true"
     android:focusable="true"
-    android:backgroundTint="@color/teal_200">
+    android:backgroundTint="@color/gray">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:background="@color/teal_200">
+        android:background="@color/red">
 
         <ImageView
             android:id="@+id/pkmn_image"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            android:background="@color/purple_700"
+            android:background="@color/red"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

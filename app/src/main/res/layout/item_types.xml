@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:backgroundTint="@color/teal_200"
+    android:backgroundTint="@color/gray"
     android:layout_width="395dp"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
@@ -13,13 +13,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="8dp"
-        android:background="@color/teal_200">
+        android:background="@color/gray">
 
         <ImageView
             android:id="@+id/type_logo"
             android:layout_width="385dp"
             android:layout_height="45dp"
-            android:background="@color/teal_200"
+            android:background="@color/gray"
             android:src="@drawable/ic_launcher_background"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
