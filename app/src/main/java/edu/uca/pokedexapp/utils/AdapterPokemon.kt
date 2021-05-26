@@ -1,6 +1,8 @@
 package edu.uca.pokedexapp.utils
 
 import android.content.Context
+import android.os.Build
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,6 +13,7 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import edu.uca.pokedexapp.R
+import edu.uca.pokedexapp.model.ElementalTypes
 import edu.uca.pokedexapp.model.Pokemon
 import edu.uca.pokedexapp.ui.fragment.DetailsPokemon
 import edu.uca.pokedexapp.ui.fragment.FragmentSecPkmn
@@ -19,14 +22,53 @@ import kotlinx.android.synthetic.main.item_pkmns.view.*
 
 class AdapterPokemon() : RecyclerView.Adapter<AdapterPokemon.ViewHolder>() {
     lateinit var items: ArrayList<Pokemon>
+    var placeholder: ArrayList<Pokemon> = arrayListOf()
     private var clickListener : RecyclerViewClickListener?=null
+    var typeSelected = 0
+    var passedFirstTime = false
+    var passedSecondTime = false
+    var key = false
 
     fun setOnClickListener(clickListener: RecyclerViewClickListener){
         this.clickListener = clickListener
     }
 
-    fun setPkmns(items: List<Pokemon>){
-        this.items = items as ArrayList<Pokemon>
+    fun setType(idtype: Int){
+        typeSelected = idtype
+        Log.d("Tipo Seleccionado", idtype.toString())
+    }
+
+    fun setPkmns(itemsr: List<Pokemon>){
+        if(!passedSecondTime && !passedFirstTime) {
+            for (i in itemsr as ArrayList<Pokemon>) {
+                if (i.primaryType == typeSelected || i.secondaryType == typeSelected) {
+                    placeholder.add(i)
+
+                }
+
+                if (i.primaryType != typeSelected) {
+                    if (i.secondaryType != typeSelected) {
+                        placeholder.remove(i)
+                    }
+                }
+
+            }
+            key = true
+        }
+        val hashSet: Set<Pokemon> = HashSet<Pokemon>(placeholder)
+        placeholder.clear()
+        placeholder.addAll(hashSet)
+        this.items = placeholder
+
+        if(!passedSecondTime && key){
+            passedFirstTime = true
+            key = false
+        }else{
+            key = true
+            passedFirstTime=false
+        }
+
+
         notifyDataSetChanged()
     }
 
@@ -53,9 +95,11 @@ class AdapterPokemon() : RecyclerView.Adapter<AdapterPokemon.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val model= items[position]
+
         Picasso.get()
             .load(model.url_image)
             .into(holder.pkmnImage)
+
     }
 
     override fun getItemCount(): Int {

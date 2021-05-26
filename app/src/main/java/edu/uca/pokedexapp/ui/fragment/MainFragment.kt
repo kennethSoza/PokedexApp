@@ -19,6 +19,7 @@ import edu.uca.pokedexapp.R
 import edu.uca.pokedexapp.intent.Intent
 import edu.uca.pokedexapp.model.ElementalTypes
 import edu.uca.pokedexapp.model.Pokemon
+import edu.uca.pokedexapp.utils.AdapterPokemon
 import edu.uca.pokedexapp.utils.AdapterType
 import edu.uca.pokedexapp.utils.DataStateTypes
 import edu.uca.pokedexapp.utils.RecyclerViewClickListener
@@ -28,8 +29,10 @@ import edu.uca.pokedexapp.utils.RecyclerViewClickListener
 class MainFragment
 constructor() : Fragment(R.layout.fragment_first){
     private val TAG: String = "AppDebug"
-
     private val viewModel: MainViewModel by viewModels()
+
+    @Inject
+    lateinit var adapterPkmn: AdapterPokemon
 
     @Inject
     lateinit var adapterTypes: AdapterType
@@ -60,7 +63,7 @@ constructor() : Fragment(R.layout.fragment_first){
         adapterTypes.setOnClickListener(object: RecyclerViewClickListener{
             override fun onClickType(position: Int, elementalTypes: ElementalTypes) {
                 Log.d("Probando, nombre:",elementalTypes.typename)
-
+                adapterPkmn.setType(elementalTypes.idType)
                findNavController().navigate(R.id.go_to_pokemon_list)
 
             }
